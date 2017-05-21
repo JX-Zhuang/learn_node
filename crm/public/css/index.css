@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    width: 600px;
+    margin:40px auto;
+}
+.container .table{
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+.container .table th{
+    background: greenyellow;
+    padding: 5px;
+}
+.container .table td{
+    padding:5px;
+}
+.table-bordered{
+    border: 3px solid greenyellow;
+}
+a{
+    text-decoration: underline;
+    color:blue;
+    cursor: pointer;
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST','/reg');
+//    xhr.open('POST','http://localhost:5560/reg');
+    xhr.responseType = 'json';
+    xhr.onreadystatechange = function () {
+        if(xhr.readyState==4&&/^2\d{2}/.test(xhr.status)){
+            console.log(xhr.response);
+        }
+    };
+    xhr.send(JSON.stringify({
+        name:'zhuangJiax'
+    }));
+</script>
+</body>
+</html>
