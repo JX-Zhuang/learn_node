@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+用户名：<input type="text" name="username">
+<br>
+年龄：<input type="text" name="age">
+<br>
+<input type="button" value="注册" onclick="reg()">
+<table>
+    <thead>
+    <tr>
+        <td>用户名</td>
+        <td>年龄</td>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    </tbody>
+</table>
+<div id="user"></div>
+<script type="text/javascript">
+    function reg() {
+        var username = document.querySelector('input[name="username"]').value;
+        var age = document.querySelector('input[name="age"]').value;
+        var user = {
+            username:username,
+            age:age
+        };
+        //1.创建ajax对象
+        var xhr = new XMLHttpRequest();
+        //指定参数
+        xhr.open('POST', '/reg', true);
+        //设置响应类型
+        xhr.responseType = 'json';
+        //注册当状态变化之后的回调函数
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == '4') {
+                if (xhr.status == 200) {
+                    var user = xhr.response,str = '';
+                    console.log(user);
+                    for(var i = 0,l = user.length;i<l;i++){
+                        str+='<tr>'+'<td>'+user[i].username+'</td>'+'<td>'+user[i].age+'</td>'+'</tr>';
+                    }
+                    document.querySelector('tbody').innerHTML = str;
+                } else {
+                    document.getElementById('user').innerText = xhr.statusText;
+                }
+            }
+        };
+        //指定请求体发送数据
+        xhr.send(JSON.stringify(user));
+    }
+</script>
+</body>
+</html>

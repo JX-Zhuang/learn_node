@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="public/css/index.css">
+</head>
+<body>
+<div class="container">
+    <table class="table table-bordered">
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>电话</th>
+            <th>地址</th>
+            <th colspan="2">操作</th>
+        </tr>
+        <tbody id="tBody">
+            <tr>
+                <td>1</td>
+                <td>zjx</td>
+                <td>22</td>
+                <td>183</td>
+                <td>China</td>
+                <td>
+                    <a>删除</a>
+                </td>
+                <td>
+                    <a href="/detail.html">修改</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!--ajax 必须存在的是服务器环境，不能出现在本地地址-->
+<script type="text/javascript" src="public/js/ajax.js"></script>
+<script type="text/javascript" src="public/js/index.js"></script>
+</body>
+</html>

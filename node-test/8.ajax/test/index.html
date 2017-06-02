@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="" id="test">
+    <label>
+        用户名:<input type="text" name="username">
+    </label>
+    <label>
+        密&nbsp;码:<input type="password" name="password">
+    </label>
+    <label>
+        头像：<input type="file" name="avatar">
+    </label>
+    <button type="button" id="regBtn">注册</button>
+</form>
+<script type="text/javascript">
+    function serialize(form) {
+        var element = Array.prototype.slice.call(form), ary = [];
+        element.forEach(function (ele) {
+            switch (ele.type) {
+                case 'text':
+                case 'password':
+                    ary.push(ele.name+'='+ele.value);
+            }
+        });
+        return ary.join('&');
+    }
+    window.onload = function () {
+        document.getElementById('regBtn').addEventListener('click', function () {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/reg', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && /^2\d{2}/.test(xhr.status)) {
+                    console.log(xhr.response);
+                }
+            };
+            xhr.send(serialize(document.getElementById('test')));
+        });
+    };
+
+</script>
+</body>
+</html>
